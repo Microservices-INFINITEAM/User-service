@@ -15,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,16 +31,16 @@ public class UserController {
 
     @GetMapping("/health_check")//uri
     public String status(){
-        return String.format("%s",env.getProperty("configWelcome.message"));
-        /*env에 있는 bootstrap으로 이동
-        >localhost:8888에 감
-        >야믈파일 이름을 따라 ecommerce로 이동
-        >configWelcome을 읽어옴*/
+//        return String.format("%s",env.getProperty("configWelcome.message"));
+//        /*env에 있는 bootstrap으로 이동
+//        >localhost:8888에 감
+//        >야믈파일 이름을 따라 ecommerce로 이동
+//        >configWelcome을 읽어옴*/
+        return String.format("It's Working in User Service on Port %s",env.getProperty("local.server.port"));
+        //data 자체를 return
     }
 //    public String status(HttpServletRequest request){
-////        return String.format("It's Working in User Service on Port %s",request.getServerPort());
-//        return String.format("It's Working in User Service on Port %s",env.getProperty("local.server.port"));
-//        //data 자체를 return
+//        return String.format("It's Working in User Service on Port %s",request.getServerPort());
 //    }
 
     @GetMapping("/welcome")
