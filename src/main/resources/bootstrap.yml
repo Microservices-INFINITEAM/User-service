@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888 #config 서버
+      name: ecommerce #참고할 야믈파일 이름 확장자 제외
