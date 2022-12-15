@@ -91,12 +91,6 @@
             <artifactId>spring-kafka</artifactId>
         </dependency>
 
-            <!-- ... for login ... -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
-<!--        </dependency>-->
-
         <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-hystrix -->
         <!--circuit breaker-->
         <dependency>

@@ -137,18 +137,17 @@ public class UserServicelmpl implements UserService {
 
     @Override
     public UserDto patchByUserId(String userId, UserDto userDto) {
-        ModelMapper mapper=new ModelMapper();
-        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        UserEntity updateEntity=mapper.map(userDto, UserEntity.class);
-        //userDto에 있는(쓴) 내용을 UserEntity에 있는 내용과 mapping시켜라
+        UserEntity updateEntity=userRepository.findByUserId(userId);
+        if(userDto.getEmail()!=null)
+            updateEntity.setEmail(userDto.getEmail());
+        if(userDto.getName()!=null)
+            updateEntity.setName(userDto.getName());
+        if(userDto.getUserLikeGenre()!=null)
+            updateEntity.setUserLikeGenre(userDto.getUserLikeGenre());
 
-        updateEntity.setId(userRepository.findByUserId(userId).getId());
-        updateEntity.setEncryptedPwd(userRepository.findByUserId(userId).getEncryptedPwd());
-        updateEntity.setUserId(userId);
         userRepository.save(updateEntity);
 
-        UserEntity userEntity=userRepository.findByUserId(userId);
-        UserDto returnDto=new ModelMapper().map(userEntity, UserDto.class);
+        UserDto returnDto=new ModelMapper().map(updateEntity, UserDto.class);
         return returnDto;
     }
 
