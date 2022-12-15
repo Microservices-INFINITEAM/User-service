@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CountRepository extends CrudRepository<CountEntity, Long> {
 
-    CountEntity findByUserIdAndProduct(String userId, String productId);
+    CountEntity findByUserIdAndMusic(String userId, String musicId);
 }

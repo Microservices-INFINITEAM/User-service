@@ -11,9 +11,9 @@ public interface UserService {
 
     UserDto deleteByUserId(String userId);
 
-    void createCount(String userId, String productId);
+    void createCount(String userId, String musicId);
 
-    CountDto findByUserIdAndProduct(String userId, String productId);
+    CountDto findByUserIdAndMusic(String userId, String productId);
 
     UserDto patchByUserId(String userId, UserDto userDto);
 }

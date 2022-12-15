@@ -27,7 +27,7 @@ public class KafkaConsumer {
         this.repository=repository;
     }
 
-    @KafkaListener(topics="catalog-count-topic")
+    @KafkaListener(topics="music-count-topic")
     public void processMessage(String kafkaMessage){
         log.info("Kafka Message: =====> "+kafkaMessage);
 
@@ -39,11 +39,11 @@ public class KafkaConsumer {
             e.printStackTrace();
         }
 
-        CountEntity entity=repository.findByUserIdAndProduct((String) map.get("userId"), (String)map.get("productId"));
+        CountEntity entity=repository.findByUserIdAndMusic((String) map.get("userId"), (String)map.get("musicId"));
         if(entity==null){
-            userService.createCount((String)map.get("userId"),(String)map.get("productId"));
-            entity=repository.findByUserIdAndProduct(
-                    (String) map.get("userId"), (String)map.get("productId"));
+            userService.createCount((String)map.get("userId"),(String)map.get("musicId"));
+            entity=repository.findByUserIdAndMusic(
+                    (String) map.get("userId"), (String)map.get("musicId"));
         }
 
         entity.setCount(entity.getCount()+1);

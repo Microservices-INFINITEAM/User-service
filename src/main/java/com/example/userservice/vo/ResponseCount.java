@@ -7,6 +7,6 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL) //불필요한 값 제어
 public class ResponseCount {
     private String userId;
-    private String product;
+    private String music;
     private Integer count;
 }

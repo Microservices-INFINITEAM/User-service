@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class CountDto {
     private String userId;
-    private String product;
+    private String music;
     private Integer count;
 }

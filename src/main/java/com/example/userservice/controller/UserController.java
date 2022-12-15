@@ -88,11 +88,11 @@ public class UserController {
         return userId+" is deleted.";
     }
 
-    @GetMapping(value="/{productId}/{userId}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(value="/{musicId}/{userId}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<ResponseCount> countUser(
             @PathVariable("userId") String userId,
-            @PathVariable("productId") String productId){
-        CountDto countDto=userService.findByUserIdAndProduct(userId,productId);
+            @PathVariable("musicId") String musicId){
+        CountDto countDto=userService.findByUserIdAndMusic(userId,musicId);
         ResponseCount returnValue=new ModelMapper().map(countDto, ResponseCount.class);
 
         return ResponseEntity.status(HttpStatus.OK).body(returnValue);

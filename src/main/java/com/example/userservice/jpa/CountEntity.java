@@ -12,7 +12,7 @@ public class CountEntity {
     @Column(nullable = false, unique = false)
     private String userId;
     @Column(nullable = false, unique = false)
-    private String product;
+    private String music;
     @Column(nullable = false, unique = false)
     private Integer count;
 }

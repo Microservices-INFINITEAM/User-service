@@ -112,15 +112,16 @@ public class UserServicelmpl implements UserService {
     public UserDto deleteByUserId(String userId) {
         UserEntity userEntity=userRepository.findByUserId(userId);
         userRepository.delete(userEntity);
+        orderServiceClient.deleteUsersOrder(userId);
         return null;
     }
 
     @Override
-    public void createCount(String userId, String productId) {
+    public void createCount(String userId, String musicId) {
         CountDto countDto=new CountDto();
         countDto.setUserId(userId);
         countDto.setCount(0);
-        countDto.setProduct(productId);
+        countDto.setMusic(musicId);
 
         ModelMapper mapper=new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -129,8 +130,8 @@ public class UserServicelmpl implements UserService {
     }
 
     @Override
-    public CountDto findByUserIdAndProduct(String userId, String productId) {
-        CountEntity countEntity=countRepository.findByUserIdAndProduct(userId,productId);
+    public CountDto findByUserIdAndMusic(String userId, String musicId) {
+        CountEntity countEntity=countRepository.findByUserIdAndMusic(userId,musicId);
         CountDto countDto=new ModelMapper().map(countEntity, CountDto.class);
         return countDto;
     }
